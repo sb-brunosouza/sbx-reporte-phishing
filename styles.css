@@ -1,0 +1,613 @@
+/* ========================================
+
+   PHISH ALERT BUTTON - Estilo KnowBe4 PAB
+
+   Botão Integrado na Toolbar do Gmail
+
+   ======================================== */
+
+
+
+/* ============================================
+
+   CONFIGURAÇÃO DE POSICIONAMENTO DO BOTÃO
+
+   Ajuste os valores abaixo:
+
+   ============================================ */
+
+   :root {
+
+    --pab-bottom: 25px;   /* Distância do fundo da tela (fallback flutuante) */
+
+    --pab-right: 25px;    /* Distância da direita da tela (fallback flutuante) */
+
+    --pab-size: 25px;     /* Tamanho do ícone */
+
+}
+
+
+
+/* ========================================
+
+   BOTÃO NA TOOLBAR DO GMAIL
+
+   Estilo idêntico aos botões nativos (circular)
+
+   ======================================== */
+
+.pab-toolbar-button {
+
+    /* Layout - botão circular como os nativos do Gmail */
+
+    display: inline-flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    vertical-align: middle !important;
+
+    
+
+    /* Espaçamento - tamanho EXATO dos botões do Gmail */
+
+    width: 40px !important;
+
+    height: 40px !important;
+
+    min-width: 40px !important;
+
+    min-height: 40px !important;
+
+    padding: 0 !important;
+
+    margin: 0 4px !important;
+
+    
+
+    /* Visual - estilo circular como botões nativos */
+
+    background: transparent !important;
+
+    border: none !important;
+
+    border-radius: 50% !important;
+
+    box-sizing: border-box !important;
+
+    
+
+    /* Comportamento */
+
+    cursor: pointer !important;
+
+    user-select: none !important;
+
+    transition: background-color 0.15s ease !important;
+
+    outline: none !important;
+
+    
+
+    /* Posicionamento */
+
+    position: relative !important;
+
+    flex-shrink: 0 !important;
+
+    align-self: center !important;
+
+}
+
+
+
+.pab-toolbar-button:hover {
+
+    background-color: rgba(60, 64, 67, 0.08) !important;
+
+}
+
+
+
+.pab-toolbar-button:active {
+
+    background-color: rgba(60, 64, 67, 0.12) !important;
+
+}
+
+
+
+/* Ícone do botão na toolbar - 20x20px como os nativos */
+
+.pab-toolbar-button .pab-icon-img {
+
+    width: 20px !important;
+
+    height: 20px !important;
+
+    min-width: 20px !important;
+
+    min-height: 20px !important;
+
+    display: block !important;
+
+    object-fit: contain !important;
+
+    opacity: 0.54 !important;
+
+    transition: opacity 0.15s ease !important;
+
+}
+
+
+
+.pab-toolbar-button:hover .pab-icon-img {
+
+    opacity: 0.87 !important;
+
+}
+
+
+
+/* Texto do botão - ESCONDIDO (apenas ícone como os nativos) */
+
+.pab-toolbar-button .pab-text-label {
+
+    display: none !important;
+
+}
+
+
+
+/* Estado de processamento na toolbar */
+
+.pab-toolbar-button.pab-processing {
+
+    cursor: wait !important;
+
+    pointer-events: none !important;
+
+    opacity: 0.4 !important;
+
+}
+
+
+
+/* ========================================
+
+   TOOLBAR CUSTOMIZADA INVISÍVEL
+
+   Aparece só quando não encontra a nativa
+
+   ======================================== */
+
+.pab-custom-toolbar {
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    padding: 8px 0 !important;
+
+    background: transparent !important;
+
+    border: none !important;
+
+    margin: 0 !important;
+
+    position: absolute !important;
+
+    top: 0 !important;
+
+    right: 0 !important;
+
+    z-index: 100 !important;
+
+}
+
+
+
+
+.pab-spinner {
+
+    width: 18px !important;
+
+    height: 18px !important;
+
+    border: 2px solid rgba(95, 99, 104, 0.2) !important;
+
+    border-top-color: #5f6368 !important;
+
+    border-radius: 50% !important;
+
+    animation: pab-spin 0.8s linear infinite !important;
+
+    display: block !important;
+
+    flex-shrink: 0 !important;
+
+    box-sizing: border-box !important;
+
+}
+
+
+
+
+
+
+@keyframes pab-spin {
+
+    to { transform: rotate(360deg); }
+
+}
+
+
+
+/* ========================================
+
+   Notificações estilo KnowBe4
+
+   ======================================== */
+
+
+
+.pab-notification {
+
+    position: fixed !important;
+
+    top: 20px !important;
+
+    right: 20px !important;
+
+    background: white !important;
+
+    color: #333 !important;
+
+    padding: 16px 20px !important;
+
+    border-radius: 4px !important;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+
+    font-family: 'Google Sans', Arial, sans-serif !important;
+
+    font-size: 14px !important;
+
+    font-weight: 500 !important;
+
+    max-width: 400px !important;
+
+    z-index: 10000 !important;
+
+    opacity: 0 !important;
+
+    transform: translateX(400px) !important;
+
+    transition: all 0.3s ease !important;
+
+    border-left: 4px solid #FF6600 !important;
+
+}
+
+
+
+.pab-notification.pab-notification-show {
+
+    opacity: 1 !important;
+
+    transform: translateX(0) !important;
+
+}
+
+
+
+.pab-notification-success {
+
+    border-left-color: #34A853 !important;
+
+}
+
+
+
+.pab-notification-error {
+
+    border-left-color: #EA4335 !important;
+
+}
+
+
+
+.pab-notification-warning {
+
+    border-left-color: #FBBC04 !important;
+
+}
+
+
+
+/* Responsividade para telas menores */
+
+@media (max-width: 768px) {
+
+    .pab-toolbar-button {
+
+        width: 40px !important;
+
+        height: 40px !important;
+
+        padding: 8px !important;
+
+    }
+
+    
+
+    .pab-toolbar-button .pab-icon-img {
+
+        width: 20px !important;
+
+        height: 20px !important;
+
+    }
+
+}
+
+
+
+/* Animação sutil no ícone quando email está aberto */
+
+@keyframes pab-pulse {
+
+    0%, 100% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(1.05);
+
+    }
+
+}
+
+
+
+body:has([data-message-id]) .pab-toolbar-button .pab-icon-img {
+
+    animation: pab-pulse 2s ease-in-out infinite !important;
+
+}
+
+
+
+/* ========================================
+
+   MODAL DE CONFIRMAÇÃO
+
+   ======================================== */
+
+
+
+.pab-modal-overlay {
+
+    position: fixed !important;
+
+    top: 0 !important;
+
+    left: 0 !important;
+
+    right: 0 !important;
+
+    bottom: 0 !important;
+
+    background: rgba(0, 0, 0, 0.5) !important;
+
+    z-index: 100000 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    opacity: 0 !important;
+
+    transition: opacity 0.2s !important;
+
+}
+
+
+
+.pab-modal-overlay.pab-modal-show {
+
+    opacity: 1 !important;
+
+}
+
+
+
+.pab-modal {
+
+    background: white !important;
+
+    border-radius: 8px !important;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+
+    max-width: 420px !important;
+
+    width: 90% !important;
+
+    overflow: hidden !important;
+
+    transform: scale(0.9) !important;
+
+    transition: transform 0.2s !important;
+
+}
+
+
+
+.pab-modal-show .pab-modal {
+
+    transform: scale(1) !important;
+
+}
+
+
+
+.pab-modal-header {
+
+    padding: 24px 24px 16px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 12px !important;
+
+    border-bottom: 1px solid #e0e0e0 !important;
+
+}
+
+
+
+.pab-modal-icon {
+
+    font-size: 32px !important;
+
+    line-height: 1 !important;
+
+}
+
+
+
+.pab-modal-header h3 {
+
+    margin: 0 !important;
+
+    font-size: 20px !important;
+
+    font-weight: 600 !important;
+
+    color: #333 !important;
+
+}
+
+
+
+.pab-modal-body {
+
+    padding: 24px !important;
+
+}
+
+
+
+.pab-modal-body p {
+
+    margin: 0 0 12px !important;
+
+    font-size: 15px !important;
+
+    color: #333 !important;
+
+    line-height: 1.5 !important;
+
+}
+
+
+
+.pab-modal-detail {
+
+    font-size: 13px !important;
+
+    color: #666 !important;
+
+    margin: 0 !important;
+
+}
+
+
+
+.pab-modal-footer {
+
+    padding: 16px 24px !important;
+
+    display: flex !important;
+
+    gap: 12px !important;
+
+    justify-content: flex-end !important;
+
+    background: #f5f5f5 !important;
+
+}
+
+
+
+.pab-modal-btn {
+
+    padding: 10px 24px !important;
+
+    border-radius: 4px !important;
+
+    font-size: 14px !important;
+
+    font-weight: 500 !important;
+
+    cursor: pointer !important;
+
+    border: none !important;
+
+    transition: all 0.2s !important;
+
+}
+
+
+
+.pab-modal-btn-cancel {
+
+    background: #e0e0e0 !important;
+
+    color: #333 !important;
+
+}
+
+
+
+.pab-modal-btn-cancel:hover {
+
+    background: #d0d0d0 !important;
+
+}
+
+
+
+.pab-modal-btn-confirm {
+
+    background: linear-gradient(135deg, #FF6600 0%, #FF5500 100%) !important;
+
+    color: white !important;
+
+    box-shadow: 0 2px 4px rgba(255, 102, 0, 0.3) !important;
+
+}
+
+
+
+.pab-modal-btn-confirm:hover {
+
+    background: linear-gradient(135deg, #FF7711 0%, #FF6600 100%) !important;
+
+    box-shadow: 0 3px 6px rgba(255, 102, 0, 0.4) !important;
+
+    transform: translateY(-1px) !important;
+
+}
+
+
+
+

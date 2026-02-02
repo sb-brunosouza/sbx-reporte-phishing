@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "SbX - Phish Alert Button",
+  "description": "Report suspicious emails with one click",
+  "version": "3.0.0",
+  "author": "SbX Security Team",
+  "permissions": [
+    "storage",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://mail.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icon.png"],
+      "matches": ["https://mail.google.com/*"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ]
+}
