@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
-  <app appid='ecldognjkghddapdhfffbjcpidgdnnco'>
-    <updatecheck codebase='https://raw.githubusercontent.com/sb-brunosouza/sbx-reporte-phishing/main/phish-alert-addon.crx' version='2.0.0' />
+  <app appid='loojamaiklgbgkllhdocedmmjonnemeg'>
+    <updatecheck codebase='https://sb-brunosouza.github.io/sbx-reporte-phishing/extension.crx' version='2.3.0' />
   </app>
 </gupdate>
